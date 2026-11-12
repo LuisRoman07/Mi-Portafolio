@@ -1,0 +1,66 @@
+:root {
+  --ink: #0e1a4a;
+  --blue: #1f3fbf;
+  --paper: #f6f7fb;
+  --mist: #dfe4f2;
+  --signal: #f2c230;
+  --text: #1c2340;
+  --max: 64rem;
+  box-sizing: border-box;
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Figtree", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--paper);
+}
+h1, h2, h3 { font-family: "Bricolage Grotesque", system-ui, sans-serif; color: var(--ink); line-height: 1.05; margin: 0; }
+a { color: var(--blue); text-underline-offset: 3px; }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
+
+.top, main, footer { width: min(100% - 2.5rem, var(--max)); margin-inline: auto; }
+.top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem 2rem; padding: 1.25rem 0; }
+.brand { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; color: var(--ink); text-decoration: none; }
+.top nav { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; }
+.top nav a { color: var(--text); text-decoration: none; }
+.top nav a:hover { text-decoration: underline; }
+
+.hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; padding: 3rem 0 4.5rem; }
+.hero h1 { font-weight: 800; font-size: clamp(3rem, 9vw, 6.5rem); letter-spacing: -.03em; }
+.role { font-size: 1.25rem; max-width: 30ch; margin: 1.5rem 0; }
+.btn { display: inline-block; background: var(--ink); color: var(--paper); padding: .8rem 1.5rem; border-radius: .25rem; font-weight: 600; text-decoration: none; }
+.btn:hover { background: var(--blue); }
+
+/* Las franjas diagonales recuerdan el estampado de una corbata */
+.hero-photo { position: relative; justify-self: center; width: min(100%, 24rem); }
+.hero-photo::before {
+  content: "";
+  position: absolute; inset: 1.25rem -1.25rem -1.25rem 1.25rem;
+  background: repeating-linear-gradient(135deg, var(--ink) 0 .6rem, var(--blue) .6rem 1.2rem);
+}
+.hero-photo img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border: 6px solid var(--paper); }
+
+section { padding: 3rem 0; border-top: 2px solid var(--mist); }
+.hero { border-top: 0; }
+section h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+section p { max-width: 62ch; }
+
+.skills, .links { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .75rem; }
+.skills li { background: var(--mist); color: var(--ink); padding: .4rem 1rem; border-radius: 99px; font-weight: 600; }
+.links li { margin-right: 1.25rem; }
+
+.project { border-left: 6px solid var(--blue); padding: .25rem 0 .25rem 1.25rem; margin-bottom: 2rem; }
+.project h3 { font-size: 1.5rem; margin-bottom: .35rem; }
+.project p { margin: 0 0 .5rem; }
+
+footer { padding: 2rem 0 3rem; color: #5a6384; font-size: .95rem; }
+
+@media (max-width: 48rem) {
+  .hero { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 1.5rem; }
+  .hero-photo { width: min(85%, 20rem); justify-self: start; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
